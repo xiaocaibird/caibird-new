@@ -1,6 +1,6 @@
 {
   "name": "caibird",
-  "version": "4.0.0-rc.1",
+  "version": "4.0.0-rc.2",
   "description": "",
   "main": "",
   "type": "module",
@@ -32,8 +32,7 @@
   },
   "files": [
     "/README.md",
-    "/dist/mjs",
-    "/dist/cjs"
+    "/dist"
   ],
   "exports": {
     ".": "./dist/index.js",
