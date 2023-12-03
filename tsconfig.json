@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
-        "rootDir": ".",
+        "rootDir": "./src",
+        "outDir": ".tsc",
         "incremental": false,
         "declaration": true,
         "inlineSourceMap": false
