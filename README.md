@@ -20,9 +20,9 @@
 
 ## 仓库
 
-源码：`https://github.com/xiaocaibird/caibird-new`
+源码：[https://github.com/xiaocaibird/caibird-new](https://github.com/xiaocaibird/caibird-new)
 
-demo: `https://github.com/xiaocaibird/caibird-demo`
+demo: [https://github.com/xiaocaibird/caibird-demo](https://github.com/xiaocaibird/caibird-demo)
 
 ## 简介
 
