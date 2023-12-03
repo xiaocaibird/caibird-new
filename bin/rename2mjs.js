@@ -15,7 +15,9 @@ const task = (dirname = '') => {
             try {
                 const fullFilename = path.join(fullDirname, filename);
 
-                if (filename.endsWith('.js')) {
+                if (filename.endsWith('.ts')) {
+                    fs.renameSync(fullFilename, fullFilename.replace(/\.ts$/, '.mts'));
+                } else if (filename.endsWith('.js')) {
                     fs.renameSync(fullFilename, fullFilename.replace(/\.js$/, '.mjs'));
                 } else {
                     task(path.join(dirname, filename));
