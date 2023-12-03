@@ -12,7 +12,7 @@
 
 3.0之前也实现了类型同构，但整体功能非常重，接入成本也比较高。
 
-4.0后将专注于做一个`MVC+DI+类型同构`的通用型框架，且将拥抱开源。
+4.0后将专注于做一个`MVC+DI+类型同构`的通用型框架，接入成本低且将拥抱开源。
 
 ### 安装
 
@@ -22,7 +22,7 @@
 
 首先说明，这里的后端指的nodejs服务端。现在大部分前端项目，都有自己的nodejs服务，可能仅做为接入层和简单的BFF层，也可能有更多的后端职责。
 
-一般情况下，nodejs端(以下统称为：server端)的代码也会和前端(以下统称为：client端)的代码放在一个工程里管理。可即使在同一个工程里，当我们在server端开发完业务api，并在client端调用时，想要获取api的字段类型，通常要做不少额外工作。
+一般情况下，nodejs端(以下统称为：`server端`)的代码也会和前端(以下统称为：`client端`)的代码放在一个工程里管理。可即使在同一个工程里，当我们在server端开发完业务api，并在client端调用时，想要获取api的字段类型，通常要做不少额外工作。
 
 另外当我们需要快速从调用方(client端)的逻辑，跳转到被调用方(server端)的逻辑时，也不能像一个函数调用一样快速跳转。
 
@@ -114,7 +114,7 @@ fn();
 
 #### `Controller`装饰器
 
-1. 用于标记需要中间件处理的controller
+1. 用于标记需要`controllersRouter中间件`(以下简称`中间件`)处理的controller
 
 1. options：
 
@@ -132,54 +132,54 @@ fn();
 
 #### koa中间件：`controllersRouter`
 
-options字段说明:
+1. options字段说明:
 
-```ts
-type Options = {
-    // 传入所有自定义的controllers，必填
-    Controllers: UninitControllers;
+    ```ts
+    type Options = {
+        // 传入所有自定义的controllers，必填
+        Controllers: UninitControllers;
 
-    // koa-body的配置，传false可禁用自动 use koa-body
-    koaBodyOptions?: KoaBodyMiddlewareOptions | false;
-    
-    // koa-views的配置，传false可禁用自动 use koa-views
-    koaViewsOptions?: KoaViewsOptions | false;
+        // koa-body的配置，传false可禁用自动 use koa-body
+        koaBodyOptions?: KoaBodyMiddlewareOptions | false;
+        
+        // koa-views的配置，传false可禁用自动 use koa-views
+        koaViewsOptions?: KoaViewsOptions | false;
 
-    // url路由前缀，一般需要与client端的ApiService对应配置一起使用。默认为空
-    prefix?: string;
-    
-    /* controller命名后缀，默认为'Controller'
-     若定义的名称为：TestController，那么在url路由和调用中的名称会识别为Test
-     若定义的名称为：TestCtrl，则保持不变 */
-    controllerSuffix?: string;
-    
-    /* 当路由里缺省controllerName或actionName时对应的默认值
-       可设置："localhost/" "localhost/user" 这类短地址默认指向的controller和action */
-    defaultPathMatchs?: RoutePathMatchs;
-    
-    /* 全局默认filter，当controller和action没有同类filter时，会执行这里的filter */
-    globalFilters?: Filter.BindConfig[];
-    
-    /* 接口响应状态为success时，json body里的code。默认为0
-       如要自定义，需要与client端的ApiService对应配置一起使用 */
-    successCode?: number;
-    
-    // 开启后，get请求会从queryKey读取并解析reqData。需和ApiService的对应配置一起使用
-    transformGetMethodJsonData?: {
-        enabled: boolean;
-        queryKey: string;
+        // url路由前缀，一般需要与client端的ApiService对应配置一起使用。默认为空
+        prefix?: string;
+        
+        /* controller命名后缀，默认为'Controller'
+        若定义的名称为：TestController，那么在url路由和调用中的名称会识别为Test
+        若定义的名称为：TestCtrl，则保持不变 */
+        controllerSuffix?: string;
+        
+        /* 当路由里缺省controllerName或actionName时对应的默认值
+        可设置："localhost/" "localhost/user" 这类短地址默认指向的controller和action */
+        defaultPathMatchs?: RoutePathMatchs;
+        
+        /* 全局默认filter，当controller和action没有同类filter时，会执行这里的filter */
+        globalFilters?: Filter.BindConfig[];
+        
+        /* 接口响应状态为success时，json body里的code。默认为0
+        如要自定义，需要与client端的ApiService对应配置一起使用 */
+        successCode?: number;
+        
+        // 开启后，get请求会从queryKey读取并解析reqData。需和ApiService的对应配置一起使用
+        transformGetMethodJsonData?: {
+            enabled: boolean;
+            queryKey: string;
+        };
+        
+        /* 可自定义传入action的reqData */
+        getRequestData?: (nowReqData: object, ctx: Context) => InnerDeclares.MayPromise<object>;
+        
+        /* 在接口设置json body前，可做最后修改 */
+        getJsonBody?: (nowJsonBody: object, context: Context) => InnerDeclares.MayPromise<object>;
+        
+        /* 在接口响应Response前，可做最后调整 */
+        onResponse?: (ctx: Context, next: Next) => InnerDeclares.MayPromise<void>;
     };
-    
-    /* 可自定义传入action的reqData */
-    getRequestData?: (nowReqData: object, ctx: Context) => InnerDeclares.MayPromise<object>;
-    
-    /* 在接口设置json body前，可做最后修改 */
-    getJsonBody?: (nowJsonBody: object, context: Context) => InnerDeclares.MayPromise<object>;
-    
-    /* 在接口响应Response前，可做最后调整 */
-    onResponse?: (ctx: Context, next: Next) => InnerDeclares.MayPromise<void>;
-};
-```
+    ```
 
 #### clinet端接口调用：`ApiService`
 
@@ -190,55 +190,55 @@ type Options = {
     1. 泛型TControllerSuffix：一般不传，默认为'Controller'，和中间件的controllerSuffix配合使用
         
     1. Options: 
-    ```ts
-    // 以下大部分字段，除了可以直接提供最终值，也可以提供一个同步或异步函数以获取最终值
-    type InitOptions = {
-        // 重试次数，默认不重试
-        retry?: number;
-        
-        // 默认为 "/"
-        origin?: ValueOrFunc<string, OmitUrlPreCallFuncParams>;
-        
-        // 请求api时统一在url上加的前缀，一般要和中间件的对应配置一起使用。默认为空
-        prefix?: ValueOrFunc<string, OmitUrlPreCallFuncParams>;
-        
-        // 当接口返回json数据时，哪些code会认为success状态，一般要和中间件的对应配置一起使用。
-        // 默认为：[0]
-        successCodes?: ValueOrFunc<SuccessCodes, PostCallFuncParams>;
-        
-        // 超时时间。默认为空
-        timeout?: PreCallValueOrFunc<number>;
-        
-        // 默认为POST
-        httpMethod?: PreCallValueOrFunc<HttpMethod>;
-        
-        // 默认为空，content-type等字段如果没有设置，会在请求时根据数据类型自动设置。
-        headers?: PreCallValueOrFunc<Record<string, number | string>>;
-        
-        // 默认的公共请求数据，每次请求都会带上，极端场景才会用到。
-        commonReqData?: PreCallValueOrFunc<ReqData>;
-        
-        // 公共的axios RequestConfig
-        baseRequestConfig?: PreCallValueOrFunc<BaseRequestConfig>;
-        
-        // 开启后，get请求会将reqData序列化后用queryKey传递。需和中间件的对应配置一起使用
-        transformGetMethodJsonData?: {
-            enabled: boolean;
-            queryKey: string;
+        ```ts
+        // 以下大部分字段，除了可以直接提供最终值，也可以提供一个同步或异步函数以获取最终值
+        type InitOptions = {
+            // 重试次数，默认不重试
+            retry?: number;
+            
+            // 默认为 "/"
+            origin?: ValueOrFunc<string, OmitUrlPreCallFuncParams>;
+            
+            // 请求api时统一在url上加的前缀，一般要和中间件的对应配置一起使用。默认为空
+            prefix?: ValueOrFunc<string, OmitUrlPreCallFuncParams>;
+            
+            // 当接口返回json数据时，哪些code会认为success状态，一般要和中间件的对应配置一起使用。
+            // 默认为：[0]
+            successCodes?: ValueOrFunc<SuccessCodes, PostCallFuncParams>;
+            
+            // 超时时间。默认为空
+            timeout?: PreCallValueOrFunc<number>;
+            
+            // 默认为POST
+            httpMethod?: PreCallValueOrFunc<HttpMethod>;
+            
+            // 默认为空，content-type等字段如果没有设置，会在请求时根据数据类型自动设置。
+            headers?: PreCallValueOrFunc<Record<string, number | string>>;
+            
+            // 默认的公共请求数据，每次请求都会带上，极端场景才会用到。
+            commonReqData?: PreCallValueOrFunc<ReqData>;
+            
+            // 公共的axios RequestConfig
+            baseRequestConfig?: PreCallValueOrFunc<BaseRequestConfig>;
+            
+            // 开启后，get请求会将reqData序列化后用queryKey传递。需和中间件的对应配置一起使用
+            transformGetMethodJsonData?: {
+                enabled: boolean;
+                queryKey: string;
+            };
+            
+            // 在发起请求前，最后调整axios RequestConfig
+            getFinallyRequestConfig?: (params: PreCallFuncParams & {
+                nowRequestConfig: RequestConfig;
+            }) => InnerDeclares.MayPromise<RequestConfig>;
+            
+            // 获取到Response后，可进行预处理
+            onReturnResponse?: (params: PostCallFuncParams) => InnerDeclares.MayPromise<Response<ResData, RawResponse>>;
+            
+            // 异常处理
+            onError?: (error: unknown, params: OmitUrlPreCallFuncParams) => InnerDeclares.MayPromise<unknown>;
         };
-        
-        // 在发起请求前，最后调整axios RequestConfig
-        getFinallyRequestConfig?: (params: PreCallFuncParams & {
-            nowRequestConfig: RequestConfig;
-        }) => InnerDeclares.MayPromise<RequestConfig>;
-        
-        // 获取到Response后，可进行预处理
-        onReturnResponse?: (params: PostCallFuncParams) => InnerDeclares.MayPromise<Response<ResData, RawResponse>>;
-        
-        // 异常处理
-        onError?: (error: unknown, params: OmitUrlPreCallFuncParams) => InnerDeclares.MayPromise<unknown>;
-    };
-    ```
+        ```
 2. `apiService.call.controller.action(reqData, callOptions)`
     
     1. reqData：根据对应的controller.action自动映射类型
@@ -273,5 +273,5 @@ type Options = {
 1. createFilter：
     
     创建自定义filter，如权限验证等。
-    
+
     1. 内置filter：httpMethodFilter
