@@ -32,6 +32,11 @@
     "tslib": "2.6.2",
     "url-join": "5.0.0"
   },
+  "files": [
+    "/README.md",
+    "/dist/mjs",
+    "/dist/cjs"
+  ],
   "exports": {
     ".": {
       "import": "./dist/mjs/index.js",
