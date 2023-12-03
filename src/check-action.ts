@@ -20,7 +20,6 @@ export const checkAction = (
 
     for (const propName of Object.getOwnPropertyNames(Controller.prototype)) {
         if (propName.toLowerCase() === actionLowerCaseName) {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             actionBody = Controller.prototype[propName] as Caibird.Action;
             if (typeof actionBody !== 'function') return false;
             break;

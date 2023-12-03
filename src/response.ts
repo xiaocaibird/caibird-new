@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/parameter-properties */
 import type { Context } from 'koa';
 import koaSend, { type SendOptions } from 'koa-send';
 

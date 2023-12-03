@@ -17,7 +17,6 @@ enum ContentType {
     Multipart = 'multipart/form-data',
 }
 enum HeaderKeys {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
     ContentType = 'Content-Type',
 }
 
@@ -178,7 +177,6 @@ export declare namespace ApiDeclares {
         TControllerSuffix extends string,
     > = unknown extends T ? T : GetCallByControllers<T, TControllerSuffix>;
 
-    // eslint-disable-next-line @typescript-eslint/ban-types
     type ControllerConstructor = Function & InnerDeclares.Class;
     type ControllerInstance = object;
 
@@ -190,7 +188,6 @@ export declare namespace ApiDeclares {
 
     type ActionBody = InnerDeclares.Func<
         InnerDeclares.MayPromise<ActionReturn>,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         [any]
     >;
     type DefaultControllerSuffix = typeof DEFAULTS.ControllerSuffix;
@@ -329,7 +326,6 @@ export class ApiService<
                                     );
                                 } catch (e: unknown) {
                                     if (onError) {
-                                        // eslint-disable-next-line @typescript-eslint/return-await
                                         return await onError(e, {
                                             reqData,
                                             controllerName,

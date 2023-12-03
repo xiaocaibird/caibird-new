@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/parameter-properties */
-// eslint-disable-next-line import/no-unassigned-import
 import 'reflect-metadata';
 
 import type { InnerDeclares } from './@types/inner';

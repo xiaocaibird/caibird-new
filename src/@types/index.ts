@@ -31,16 +31,12 @@ export declare namespace Caibird {
         ? R | undefined
         : never;
 
-    // eslint-disable-next-line @typescript-eslint/ban-types
     type UninitController = Function &
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         InnerDeclares.Class<object, [ctx: any]> &
         PartialCommonSymbolData<Controller.Config>;
 
     type Controller = CommonSymbolData<Controller.Config> &
-        // eslint-disable-next-line @typescript-eslint/ban-types
         Function &
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         InnerDeclares.Class<object, [ctx: any]>;
 
     type UninitControllers = InnerDeclares.StrictRecord<
@@ -57,7 +53,6 @@ export declare namespace Caibird {
 
     type Action = InnerDeclares.Func<
         InnerDeclares.MayPromise<Action.Return>,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         [reqData?: any]
     >;
 
@@ -94,7 +89,6 @@ export declare namespace Caibird {
             name: string,
             weight: number,
             param: unknown,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             hooks: Hooks<any>,
             self: InnerDeclares.Func,
         };

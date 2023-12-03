@@ -128,7 +128,6 @@ export const innerControllersRouter = (
                     };
 
                     if (queryKey in reqData) {
-                        // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
                         delete (reqData as InnerDeclares.IndexObject)[queryKey];
                     }
                 }
