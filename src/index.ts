@@ -1,4 +1,4 @@
-export type { EasytsDeclares } from './@types';
+export type { Caibird } from './@types';
 export * from './errors';
 export { View } from './response';
 export { Controller } from './decorators';

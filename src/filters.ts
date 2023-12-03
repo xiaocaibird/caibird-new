@@ -1,10 +1,10 @@
-import type { EasytsDeclares } from './@types';
+import type { Caibird } from './@types';
 import { HTTP_STATUS } from './consts';
 import { createFilter } from './create-filter';
 import { StatusError } from './errors';
 
 export const httpMethodFilter = createFilter('httpMethodFilter', {
-    preAction: (param: EasytsDeclares.HttpMethod | EasytsDeclares.HttpMethod [], ctx) => {
+    preAction: (param: Caibird.HttpMethod | Caibird.HttpMethod [], ctx) => {
         const allowMethods = param instanceof Array ? param : [param];
         const currentMethod = ctx.method;
         if (

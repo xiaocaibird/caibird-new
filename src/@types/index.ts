@@ -6,7 +6,7 @@ import type { InnerDeclares } from './inner';
 import type { KEYS } from '../consts';
 import type { BaseActionReturn } from '../response';
 
-export declare namespace EasytsDeclares {
+export declare namespace Caibird {
     namespace Response {
         type BaseJsonBody = {
             data: Action.ResData,

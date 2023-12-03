@@ -4,27 +4,27 @@ import 'reflect-metadata';
 
 import type { InnerDeclares } from './@types/inner';
 
-import type { EasytsDeclares } from './@types';
+import type { Caibird } from './@types';
 import { KEYS } from './consts';
 
 export namespace SymbolUtils {
     export const getCommonValue = <
-        T extends EasytsDeclares.PartialCommonSymbolData,
+        T extends Caibird.PartialCommonSymbolData,
     >(
         target: T,
-    ) => target[KEYS.Symbols.Common] as EasytsDeclares.GetCommonSymbolValue<T>;
+    ) => target[KEYS.Symbols.Common] as Caibird.GetCommonSymbolValue<T>;
 
     export const setCommonValue = <
-        T extends EasytsDeclares.PartialCommonSymbolData,
+        T extends Caibird.PartialCommonSymbolData,
     >(
         target: T,
-        value: EasytsDeclares.GetCommonSymbolValue<T>,
+        value: Caibird.GetCommonSymbolValue<T>,
     ) => {
         target[KEYS.Symbols.Common] = value;
     };
 
     export const defineMetadataCommonValue = <T>(
-        target: EasytsDeclares.PartialCommonSymbolData,
+        target: Caibird.PartialCommonSymbolData,
         value: T,
     ) => {
         if (!(KEYS.Symbols.Common in target)) {

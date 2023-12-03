@@ -5,7 +5,7 @@ import koaViews from '@ladjs/koa-views';
 
 import type { InnerDeclares } from './@types/inner';
 
-import type { EasytsDeclares } from './@types';
+import type { Caibird } from './@types';
 import { checkAction } from './check-action';
 import { DEFAULTS, HTTP_STATUS, TEXTS } from './consts';
 import { JsonError, StatusError } from './errors';
@@ -13,7 +13,7 @@ import { Response } from './response';
 import { SymbolUtils } from './utils';
 
 export const innerControllersRouter = (
-    options: EasytsDeclares.Middleware.Options,
+    options: Caibird.Middleware.Options,
     app?: Application,
 ) => {
     const {
@@ -39,7 +39,7 @@ export const innerControllersRouter = (
 
     let controllers = oriControllers;
 
-    const convertControllers: EasytsDeclares.UninitControllers = {};
+    const convertControllers: Caibird.UninitControllers = {};
 
     for (const propName in controllers) {
         const lowercaseName = propName
@@ -66,7 +66,7 @@ export const innerControllersRouter = (
             const {
                 controller: controllerName = defaultPathMatchs.controller,
                 action: actionName = defaultPathMatchs.action,
-            } = ctx.params as EasytsDeclares.Middleware.RoutePathMatchs;
+            } = ctx.params as Caibird.Middleware.RoutePathMatchs;
 
             if (!controllerName || !actionName) {
                 await next();
@@ -91,7 +91,7 @@ export const innerControllersRouter = (
             const controllerInstance = new ControllerConstructor(ctx);
 
             const actionInfo = checkAction(
-                ControllerConstructor as EasytsDeclares.Controller,
+                ControllerConstructor as Caibird.Controller,
                 actionName,
                 ctx,
                 globalFilters,
@@ -176,6 +176,6 @@ export const innerControllersRouter = (
 };
 
 export const controllersRouter = (
-    options: EasytsDeclares.Middleware.Options,
+    options: Caibird.Middleware.Options,
     app: Application,
 ) => innerControllersRouter(options, app);

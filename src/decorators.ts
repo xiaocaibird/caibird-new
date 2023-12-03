@@ -1,11 +1,11 @@
 import type { InnerDeclares } from './@types/inner';
 
-import type { EasytsDeclares } from './@types';
+import type { Caibird } from './@types';
 import { DEFAULTS, KEYS, TEXTS } from './consts';
 import { SymbolUtils } from './utils';
 
 export const getDefaultControllerConfig =
-    (): EasytsDeclares.Controller.Config => ({
+    (): Caibird.Controller.Config => ({
         filterConfigList: [],
         filterConfigWeightList: {},
         isInited: false,
@@ -18,7 +18,7 @@ export const Controller =
             suffix?: string,
         } = {},
     ) =>
-    (target: EasytsDeclares.UninitController) => {
+    (target: Caibird.UninitController) => {
         const { suffix = DEFAULTS.ControllerSuffix } = options;
 
         if (suffix && !target.name.endsWith(suffix)) {

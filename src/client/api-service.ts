@@ -3,7 +3,7 @@ import Formdata from 'form-data';
 import urlJoin from 'url-join';
 
 import type { InnerDeclares } from '../@types/inner';
-import type { EasytsDeclares } from '../@types';
+import type { Caibird } from '../@types';
 import { DEFAULTS, type KEYS } from '../consts';
 import { TaskUtils } from '../utils';
 
@@ -22,8 +22,8 @@ enum HeaderKeys {
 }
 
 export declare namespace ApiDeclares {
-    type ReqData = EasytsDeclares.Action.ReqData;
-    type ResData = EasytsDeclares.Action.ResData;
+    type ReqData = Caibird.Action.ReqData;
+    type ResData = Caibird.Action.ResData;
 
     type RequestConfig<TReqData = ReqData> = AxiosRequestConfig<TReqData>;
     type RawResponse<TResData = ResData, TReqData = ReqData> = AxiosResponse<
@@ -84,7 +84,7 @@ export declare namespace ApiDeclares {
 
             // 覆盖
             timeout?: PreCallValueOrFunc<number>,
-            httpMethod?: PreCallValueOrFunc<EasytsDeclares.HttpMethod>,
+            httpMethod?: PreCallValueOrFunc<Caibird.HttpMethod>,
 
             // 合并
             headers?: PreCallValueOrFunc<Record<string, number | string>>,
@@ -438,7 +438,7 @@ export class ApiService<
                 this.#getEffectiveValueOrFunc('httpMethod', callOptions),
                 preFuncParams,
             )) ??
-            (baseRequestConfig.method as EasytsDeclares.HttpMethod | undefined) ??
+            (baseRequestConfig.method as Caibird.HttpMethod | undefined) ??
             'POST';
 
         const timeout =

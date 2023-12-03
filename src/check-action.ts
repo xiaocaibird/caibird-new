@@ -3,15 +3,15 @@ import orderBy from 'lodash/orderBy';
 
 import type { InnerDeclares } from './@types/inner';
 
-import type { EasytsDeclares } from './@types';
+import type { Caibird } from './@types';
 import { KEYS } from './consts';
 import { SymbolUtils } from './utils';
 
 export const checkAction = (
-    Controller: EasytsDeclares.Controller,
+    Controller: Caibird.Controller,
     actionName: string,
     ctx: Context,
-    globalFilters: EasytsDeclares.Filter.BindConfig[] = [],
+    globalFilters: Caibird.Filter.BindConfig[] = [],
 ) => {
     let actionBody = null;
     const actionLowerCaseName = actionName.toLowerCase();
@@ -21,7 +21,7 @@ export const checkAction = (
     for (const propName of Object.getOwnPropertyNames(Controller.prototype)) {
         if (propName.toLowerCase() === actionLowerCaseName) {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-            actionBody = Controller.prototype[propName] as EasytsDeclares.Action;
+            actionBody = Controller.prototype[propName] as Caibird.Action;
             if (typeof actionBody !== 'function') return false;
             break;
         }
@@ -34,8 +34,8 @@ export const checkAction = (
 
     const filterList: InnerDeclares.Func[] = [];
     const execList: {
-        hooks: EasytsDeclares.Filter.BindConfig['hooks'],
-        args: EasytsDeclares.Filter.HookArgs<unknown>,
+        hooks: Caibird.Filter.BindConfig['hooks'],
+        args: Caibird.Filter.HookArgs<unknown>,
     }[] = [];
 
     if (actionConfig) {

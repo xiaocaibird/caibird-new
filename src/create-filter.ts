@@ -1,17 +1,17 @@
-import type { EasytsDeclares } from './@types';
+import type { Caibird } from './@types';
 import { KEYS, TEXTS } from './consts';
 import { getDefaultControllerConfig } from './decorators';
 import { SymbolUtils } from './utils';
 
 export const createFilter = <TParam>(
     name: string,
-    hooks: EasytsDeclares.Filter.Hooks<TParam>,
+    hooks: Caibird.Filter.Hooks<TParam>,
     options: {
         defaultWeight?: number,
         onBind?: (
             param: TParam,
-            filterConfig: EasytsDeclares.Filter.BindConfig,
-            opt: EasytsDeclares.Filter.CommonOptionos,
+            filterConfig: Caibird.Filter.BindConfig,
+            opt: Caibird.Filter.CommonOptionos,
         ) => void,
     } = {},
 ) => {
@@ -20,7 +20,7 @@ export const createFilter = <TParam>(
         : [param: TParam, weight?: number];
 
     type Return<TObj extends object | undefined> = undefined extends TObj
-        ? EasytsDeclares.Filter.BindConfig
+        ? Caibird.Filter.BindConfig
         : undefined;
 
     const filter =
@@ -32,7 +32,7 @@ export const createFilter = <TParam>(
             const param = args[0] ?? undefined;
             const weight = args[1] ?? options.defaultWeight ?? 0;
 
-            const filterConfig: EasytsDeclares.Filter.BindConfig = {
+            const filterConfig: Caibird.Filter.BindConfig = {
                 name,
                 weight,
                 param,
@@ -42,13 +42,13 @@ export const createFilter = <TParam>(
 
             if (obj) {
                 let Controller;
-                let targetKind: EasytsDeclares.TargetKind;
+                let targetKind: Caibird.TargetKind;
                 if (actionName && KEYS.Constructor in obj) {
                     Controller =
-                        obj.constructor as EasytsDeclares.UninitController;
+                        obj.constructor as Caibird.UninitController;
                     targetKind = 'Action';
                 } else {
-                    Controller = obj as EasytsDeclares.UninitController;
+                    Controller = obj as Caibird.UninitController;
                     targetKind = 'Controller';
                 }
 
@@ -118,12 +118,12 @@ export const createFilter = <TParam>(
                 );
 
                 options.onBind?.(param as TParam, filterConfig, {
-                    Controller: Controller as EasytsDeclares.Controller,
+                    Controller: Controller as Caibird.Controller,
                     targetInfo: {
                         name: actionName ?? Controller.name,
                         kind: targetKind,
                         config: targetConfig,
-                    } as EasytsDeclares.Filter.CommonOptionos['targetInfo'],
+                    } as Caibird.Filter.CommonOptionos['targetInfo'],
                 });
 
                 return undefined as Return<TObj>;

@@ -2,7 +2,7 @@
 import type { Context } from 'koa';
 import koaSend, { type SendOptions } from 'koa-send';
 
-import type { EasytsDeclares } from './@types';
+import type { Caibird } from './@types';
 import { DEFAULTS, HTTP_STATUS, KEYS } from './consts';
 
 export abstract class BaseActionReturn {
@@ -84,15 +84,15 @@ export namespace View {
 export namespace Response {
     export const Json = async (
         ctx: Context,
-        data: EasytsDeclares.Action.ResData,
+        data: Caibird.Action.ResData,
         code: number,
         message?: string,
-        getJsonBody?: EasytsDeclares.Middleware.Options['getJsonBody'],
+        getJsonBody?: Caibird.Middleware.Options['getJsonBody'],
     ) => {
         if (ctx.headerSent) {
             return;
         }
-        const json: EasytsDeclares.Response.BaseJsonBody = {
+        const json: Caibird.Response.BaseJsonBody = {
             code,
             data,
         };
@@ -119,10 +119,10 @@ export namespace Response {
     };
 
     export const Action = async (
-        result: EasytsDeclares.Action.Return,
+        result: Caibird.Action.Return,
         ctx: Context,
         successCode: number = DEFAULTS.SuccessCode,
-        getJsonBody?: EasytsDeclares.Middleware.Options['getJsonBody'],
+        getJsonBody?: Caibird.Middleware.Options['getJsonBody'],
     ) => {
         if (ctx.headerSent) {
             return;
