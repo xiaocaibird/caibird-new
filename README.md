@@ -18,6 +18,12 @@
 
     npm i caibird@rc
 
+## 仓库
+
+源码：`https://github.com/xiaocaibird/caibird-new`
+
+demo: `https://github.com/xiaocaibird/caibird-demo`
+
 ## 简介
 
 &emsp;&emsp;首先说明，这里的后端指的nodejs服务端。现在大部分前端项目，都有自己的nodejs服务，可能仅做为接入层和简单的BFF层，也可能有更多的后端职责。
