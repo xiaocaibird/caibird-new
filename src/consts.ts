@@ -44,7 +44,7 @@ export namespace TEXTS {
 }
 
 export const DEFAULTS = {
-    LoadToAppProperty: 'easy-ts-controller',
+    LoadToAppProperty: 'caibird-controller',
     ControllerDir: 'app/controller',
     ControllerSuffix: 'Controller',
     SuccessCode: 0,
