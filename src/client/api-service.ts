@@ -2,7 +2,7 @@ import axios, { type AxiosRequestConfig, type AxiosResponse } from 'axios';
 import Formdata from 'form-data';
 import urlJoin from 'url-join';
 
-import type { InnerDeclares } from '../../core/inner';
+import type { InnerDeclares } from '../@types/inner';
 import type { EasytsDeclares } from '../@types';
 import { DEFAULTS, type KEYS } from '../consts';
 import { TaskUtils } from '../utils';

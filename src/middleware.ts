@@ -3,7 +3,7 @@ import type Application from 'koa';
 import koaBody from 'koa-body';
 import koaViews from 'koa-views';
 
-import type { InnerDeclares } from '../core/inner';
+import type { InnerDeclares } from './@types/inner';
 
 import type { EasytsDeclares } from './@types';
 import { checkAction } from './check-action';

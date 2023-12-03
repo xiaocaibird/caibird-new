@@ -1,7 +1,7 @@
 import type { Context } from 'koa';
 import orderBy from 'lodash/orderBy';
 
-import type { InnerDeclares } from '../core/inner';
+import type { InnerDeclares } from './@types/inner';
 
 import type { EasytsDeclares } from './@types';
 import { KEYS } from './consts';

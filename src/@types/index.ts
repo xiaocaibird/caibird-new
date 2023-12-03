@@ -2,7 +2,7 @@ import type { Context, Next } from 'koa';
 import type { KoaBodyMiddlewareOptions } from 'koa-body';
 import type koaViews from 'koa-views';
 
-import type { InnerDeclares } from '../../core/inner';
+import type { InnerDeclares } from './inner';
 import type { KEYS } from '../consts';
 import type { BaseActionReturn } from '../response';
 

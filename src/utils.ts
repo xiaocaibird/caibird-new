@@ -2,7 +2,7 @@
 // eslint-disable-next-line import/no-unassigned-import
 import 'reflect-metadata';
 
-import type { InnerDeclares } from '../core/inner';
+import type { InnerDeclares } from './@types/inner';
 
 import type { EasytsDeclares } from './@types';
 import { KEYS } from './consts';

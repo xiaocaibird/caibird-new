@@ -1,0 +1,12 @@
+node_modules
+npm-debug.log
+.DS_Store
+
+# .build
+.cache
+.tsc
+# .log
+
+.dist
+
+# 以上为通用配置

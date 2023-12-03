@@ -1,4 +1,4 @@
-import type { InnerDeclares } from '../core/inner';
+import type { InnerDeclares } from './@types/inner';
 
 import type { EasytsDeclares } from './@types';
 import { DEFAULTS, KEYS, TEXTS } from './consts';
