@@ -7,6 +7,6 @@ npm-debug.log
 .tsc
 # .log
 
-.dist
+dist
 
 # 以上为通用配置
