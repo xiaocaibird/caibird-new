@@ -1,6 +1,6 @@
 {
   "name": "caibird",
-  "version": "4.0.0-rc.11",
+  "version": "4.0.0-rc.12",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -8,6 +8,8 @@
   },
   "author": "caibird",
   "license": "MIT",
+  "repository": "https://github.com/xiaocaibird/caibird-new",
+  "homepage": "https://github.com/xiaocaibird/caibird-new",
   "devDependencies": {
     "@types/koa": "2.13.12",
     "@types/koa-send": "4.1.6",
