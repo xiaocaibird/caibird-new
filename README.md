@@ -1,44 +1,44 @@
 # caibird
 
-### 序
+## 序
 
-我一直认为typescript对前端的代码质量和开发效率的提升意义非常重大。
+&emsp;&emsp;我一直认为typescript对前端的代码质量和开发效率的提升意义非常重大。
 
-所谓“善战者无赫赫之功，善医者无煌煌之名”，如果能把typescript用好，它就是前端代码质量和开发效率的“善战者和善医者”。
+&emsp;&emsp;所谓“善战者无赫赫之功，善医者无煌煌之名”，如果能把typescript用好，它就是前端代码质量和开发效率的“善战者和善医者”。
 
-### 版本
+## 版本
 
     v4.0-RC
 
-3.0之前也实现了类型同构，但整体功能非常重，接入成本也比较高。
+&emsp;&emsp;3.0之前也实现了类型同构，但整体功能非常重，接入成本也比较高。
 
-4.0后将专注于做一个`MVC+DI+类型同构`的通用型框架，接入成本低且将拥抱开源。
+&emsp;&emsp;4.0后将专注于做一个`MVC+DI+类型同构`的通用型框架，接入成本低且将拥抱开源。
 
-### 安装
+## 安装
 
     npm i caibird@rc
 
-### 简介
+## 简介
 
-首先说明，这里的后端指的nodejs服务端。现在大部分前端项目，都有自己的nodejs服务，可能仅做为接入层和简单的BFF层，也可能有更多的后端职责。
+&emsp;&emsp;首先说明，这里的后端指的nodejs服务端。现在大部分前端项目，都有自己的nodejs服务，可能仅做为接入层和简单的BFF层，也可能有更多的后端职责。
 
-一般情况下，nodejs端(以下统称为：`server端`)的代码也会和前端(以下统称为：`client端`)的代码放在一个工程里管理。可即使在同一个工程里，当我们在server端开发完业务api，并在client端调用时，想要获取api的字段类型，通常要做不少额外工作。
+&emsp;&emsp;一般情况下，nodejs端(以下统称为：`server端`)的代码也会和前端(以下统称为：`client端`)的代码放在一个工程里管理。可即使在同一个工程里，当我们在server端开发完业务api，并在client端调用时，想要获取api的字段类型，通常要做不少额外工作。
 
-另外当我们需要快速从调用方(client端)的逻辑，跳转到被调用方(server端)的逻辑时，也不能像一个函数调用一样快速跳转。
+&emsp;&emsp;另外当我们需要快速从调用方(client端)的逻辑，跳转到被调用方(server端)的逻辑时，也不能像一个函数调用一样快速跳转。
 
 
-所以这里抛出一个合理的猜想：
+&emsp;&emsp;所以这里抛出一个合理的猜想：
 
     既然在一个工程里了，是否有办法能让业务功能在开发过程中，零成本的接入client端到server端的类型检查以及快速调试？
 
-于是我就想到了要做“前后端类型同构”，关键能力如下：
+&emsp;&emsp;于是我就想到了要做“前后端类型同构”，关键能力如下：
 
 1. 提供client+server的跨端类型同构能力
 1. 提供server端api(nodejs api)的方法级调用能力
 1. 完全基于ts和koa，无需任何中间层和额外的协议文件，在开发时能随时响应api的字段变化
 1. 在开发时能直接从client端跳转到server端的api代码或参数字段
 
-### server端示例
+## server端示例
 
 ```ts
 // src/server/index.ts
@@ -82,7 +82,7 @@ export class TestController extends BaseController {
 
 ```
 
-### client端示例
+## client端示例
 
 ```ts
 
@@ -110,9 +110,9 @@ fn();
 
 ```
 
-### 核心模块
+## 核心模块
 
-#### `Controller`装饰器
+### `Controller`装饰器
 
 1. 用于标记需要`controllersRouter中间件`(以下简称`中间件`)处理的controller
 
@@ -130,7 +130,7 @@ fn();
     1. action：controller中的一个方法，对应一个接口响应
     1. filter：可灵活组合，拦截进入controller或action的请求，实现AOP
 
-#### koa中间件：`controllersRouter`
+### koa中间件：`controllersRouter`
 
 1. options字段说明:
 
@@ -181,7 +181,7 @@ fn();
     };
     ```
 
-#### clinet端接口调用：`ApiService`
+### clinet端接口调用：`ApiService`
 
 1. `new ApiService<TControllers, TControllerSuffix>(initOptions)`
     
@@ -261,7 +261,7 @@ fn();
           1. isRaw为false或不传，return的类型为接口数据类型(response Data)
           1. isRaw为true时，return的类型为原始回包(response Body)
 
-#### 其它模块
+### 其它模块
 1. View：
     
     用于让action响应除了json body以外的数据类型。目前添加了几个常用的，之后会持续丰富：
