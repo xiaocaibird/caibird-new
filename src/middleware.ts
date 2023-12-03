@@ -1,7 +1,7 @@
 import Router from '@koa/router';
 import type Application from 'koa';
 import koaBody from 'koa-body';
-import koaViews from 'koa-views';
+import koaViews from '@ladjs/koa-views';
 
 import type { InnerDeclares } from './@types/inner';
 
