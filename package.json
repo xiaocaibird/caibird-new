@@ -5,9 +5,7 @@
   "main": "",
   "type": "module",
   "scripts": {
-    "dist:mjs": "rimraf dist/mjs && tsc --outDir dist/mjs",
-    "dist:cjs": "rimraf dist/cjs && tsc --outDir dist/cjs --moduleResolution node --module commonjs --verbatimModuleSyntax false && node bin/rename2cjs.cjs",
-    "dist": "npm run dist:mjs && npm run dist:cjs"
+    "dist": "rimraf dist && tsc --outDir dist --moduleResolution node --module commonjs --verbatimModuleSyntax false && node bin/rename2cjs.cjs && tsc --outDir dist"
   },
   "author": "caibird",
   "license": "MIT",
@@ -38,17 +36,7 @@
     "/dist/cjs"
   ],
   "exports": {
-    ".": {
-      "import": "./dist/mjs/index.js",
-      "require": "./dist/cjs/index.cjs"
-    },
-    "./client": {
-      "import": "./dist/mjs/client/index.js",
-      "require": "./dist/cjs/client/index.cjs"
-    },
-    "./*": {
-      "import": "./dist/mjs/*",
-      "require": "./dist/cjs/*"
-    }
+    ".": "./dist/index.js",
+    "./*": "./dist/*"
   }
 }
