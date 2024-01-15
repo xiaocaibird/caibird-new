@@ -6,57 +6,57 @@ settings:
 
 dependencies:
   '@koa/router':
-    specifier: 12.0.1
+    specifier: ~12.0.1
     version: 12.0.1
   '@ladjs/koa-views':
-    specifier: 9.0.0
+    specifier: ~9.0.0
     version: 9.0.0(@types/koa@2.14.0)(lodash@4.17.21)
   axios:
-    specifier: 1.6.5
+    specifier: ~1.6.5
     version: 1.6.5
   form-data:
-    specifier: 4.0.0
+    specifier: ~4.0.0
     version: 4.0.0
   koa:
-    specifier: 2.15.0
+    specifier: ~2.15.0
     version: 2.15.0
   koa-body:
-    specifier: 6.0.1
+    specifier: ~6.0.1
     version: 6.0.1
   koa-send:
-    specifier: 5.0.1
+    specifier: ~5.0.1
     version: 5.0.1
   lodash:
-    specifier: 4.17.21
+    specifier: ~4.17.21
     version: 4.17.21
   reflect-metadata:
-    specifier: 0.2.1
+    specifier: ~0.2.1
     version: 0.2.1
   tslib:
-    specifier: 2.6.2
+    specifier: ~2.6.2
     version: 2.6.2
   url-join:
-    specifier: 5.0.0
+    specifier: ~5.0.0
     version: 5.0.0
 
 devDependencies:
   '@types/koa':
-    specifier: 2.14.0
+    specifier: ~2.14.0
     version: 2.14.0
   '@types/koa-send':
-    specifier: 4.1.6
+    specifier: ~4.1.6
     version: 4.1.6
   '@types/koa__router':
-    specifier: 12.0.4
+    specifier: ~12.0.4
     version: 12.0.4
   '@types/lodash':
-    specifier: 4.14.202
+    specifier: ~4.14.202
     version: 4.14.202
   rimraf:
-    specifier: 5.0.5
+    specifier: ~5.0.5
     version: 5.0.5
   typescript:
-    specifier: 5.3.3
+    specifier: ^5.3.3
     version: 5.3.3
 
 packages:
