@@ -11,23 +11,23 @@
   "repository": "https://github.com/xiaocaibird/caibird-new",
   "homepage": "https://github.com/xiaocaibird/caibird-new",
   "devDependencies": {
-    "@types/koa": "2.13.12",
+    "@types/koa": "2.14.0",
     "@types/koa-send": "4.1.6",
     "@types/koa__router": "12.0.4",
     "@types/lodash": "4.14.202",
     "rimraf": "5.0.5",
-    "typescript": "5.3.2"
+    "typescript": "5.3.3"
   },
   "dependencies": {
     "@koa/router": "12.0.1",
     "@ladjs/koa-views": "9.0.0",
-    "axios": "1.6.2",
+    "axios": "1.6.5",
     "form-data": "4.0.0",
-    "koa": "2.14.2",
+    "koa": "2.15.0",
     "koa-body": "6.0.1",
     "koa-send": "5.0.1",
     "lodash": "4.17.21",
-    "reflect-metadata": "0.1.13",
+    "reflect-metadata": "0.2.1",
     "tslib": "2.6.2",
     "url-join": "5.0.0"
   },
@@ -37,17 +37,17 @@
   ],
   "exports": {
     ".": {
-        "import": "./dist/index.mjs",
-        "require": "./dist/index.js"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     },
     "./*": "./dist/*",
     "./client": {
-        "import": "./dist/client/index.mjs",
-        "require": "./dist/client/index.js"
+      "import": "./dist/client/index.mjs",
+      "require": "./dist/client/index.js"
     },
     "./@types": {
-        "import": "./dist/@types/index.mjs",
-        "require": "./dist/@types/index.js"
+      "import": "./dist/@types/index.mjs",
+      "require": "./dist/@types/index.js"
     }
   }
 }
