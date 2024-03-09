@@ -1,6 +1,6 @@
 {
     "name": "caibird-mjs",
-    "version": "4.0.2",
+    "version": "4.0.3",
     "description": "",
     "type": "module",
     "main": "dist/index.js",
@@ -41,9 +41,7 @@
         ".": {
             "import": "./dist/index.js"
         },
-        "./*": {
-            "import": "./dist/*"
-        },
+        "./*": "./dist/*",
         "./client": {
             "import": "./dist/client/index.js"
         },
