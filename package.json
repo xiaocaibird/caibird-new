@@ -2,9 +2,11 @@
     "name": "caibird",
     "version": "4.0.0",
     "description": "",
+    "type": "module",
     "main": "dist/index.js",
     "scripts": {
-        "dist": "rimraf dist && tsc --outDir dist && node bin/rename2mjs.js && tsc --outDir dist --moduleResolution node --module commonjs --verbatimModuleSyntax false"
+        "dist": "rimraf dist && tsc --outDir dist",
+        "dist-cjs": "rimraf dist && tsc --outDir dist --moduleResolution node --module commonjs --verbatimModuleSyntax false"
     },
     "author": "caibird",
     "license": "MIT",
@@ -37,17 +39,16 @@
     ],
     "exports": {
         ".": {
-            "import": "./dist/index.mjs",
-            "require": "./dist/index.js"
+            "import": "./dist/index.js"
         },
-        "./*": "./dist/*",
+        "./*": {
+            "import": "./dist/*"
+        },
         "./client": {
-            "import": "./dist/client/index.mjs",
-            "require": "./dist/client/index.js"
+            "import": "./dist/client/index.js"
         },
         "./@types": {
-            "import": "./dist/@types/index.mjs",
-            "require": "./dist/@types/index.js"
+            "import": "./dist/@types/index.js"
         }
     }
 }
