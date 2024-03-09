@@ -1,11 +1,11 @@
 {
     "name": "caibird",
-    "version": "4.0.0",
+    "version": "4.0.1",
     "description": "",
-    "type": "module",
+    "type": "commonjs",
     "main": "dist/index.js",
     "scripts": {
-        "dist": "rimraf dist && tsc --outDir dist",
+        "dist-mjs": "rimraf dist && tsc --outDir dist",
         "dist-cjs": "rimraf dist && tsc --outDir dist --moduleResolution node --module commonjs --verbatimModuleSyntax false"
     },
     "author": "caibird",
@@ -39,16 +39,16 @@
     ],
     "exports": {
         ".": {
-            "import": "./dist/index.js"
+            "require": "./dist/index.js"
         },
         "./*": {
-            "import": "./dist/*"
+            "require": "./dist/*"
         },
         "./client": {
-            "import": "./dist/client/index.js"
+            "require": "./dist/client/index.js"
         },
         "./@types": {
-            "import": "./dist/@types/index.js"
+            "require": "./dist/@types/index.js"
         }
     }
 }
