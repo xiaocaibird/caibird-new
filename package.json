@@ -1,8 +1,8 @@
 {
-    "name": "caibird",
-    "version": "4.0.1",
+    "name": "caibird-mjs",
+    "version": "4.0.2",
     "description": "",
-    "type": "commonjs",
+    "type": "module",
     "main": "dist/index.js",
     "scripts": {
         "dist-mjs": "rimraf dist && tsc --outDir dist",
@@ -39,16 +39,16 @@
     ],
     "exports": {
         ".": {
-            "require": "./dist/index.js"
+            "import": "./dist/index.js"
         },
         "./*": {
-            "require": "./dist/*"
+            "import": "./dist/*"
         },
         "./client": {
-            "require": "./dist/client/index.js"
+            "import": "./dist/client/index.js"
         },
         "./@types": {
-            "require": "./dist/@types/index.js"
+            "import": "./dist/@types/index.js"
         }
     }
 }
